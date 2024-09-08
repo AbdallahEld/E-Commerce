@@ -1,0 +1,102 @@
+<!-- <nav class=" bg-zinc-200">
+<div class="container mx-auto md:flex justify-between flex p-3"> 
+    <ul class="flex md:flex space-x-2">
+        <li>
+            <img src="../../assets/images/freshcart-logo.svg" alt="">
+        </li>
+        @if(showLinks){
+            <li>
+                <a routerLink="home" routerLinkActive="bg-main">home</a>
+            </li>
+            <li>
+                <a routerLink="cart" routerLinkActive="bg-main">cart</a>
+            </li>
+            <li>
+                <a routerLink="products" routerLinkActive="bg-main">products</a>
+            </li>
+            <li>
+                <a routerLink="brands" routerLinkActive="bg-main">brands</a>
+            </li>
+            <li>
+                <a routerLink="categories" routerLinkActive="bg-main">categories</a>
+            </li>
+        }
+    </ul>
+
+    <ul class="flex md:flex space-x-3">
+        <li>
+            <i class="fa-brands fa-facebook"></i>
+        </li>
+        <li>
+            <i class="fa-brands fa-youtube"></i>
+        </li>
+        <li>
+            <i class="fa-brands fa-twitter"></i>
+        </li>
+        <li>
+            <i class="fa-brands fa-tiktok"></i>
+        </li>
+        <li>
+            <i class="fa-brands fa-instagram"></i>
+        </li>
+        @if(!showLinks){
+            <li>
+                <a routerLink="register" routerLinkActive="bg-main">Register</a>
+            </li>
+            <li>
+                <a routerLink="login" routerLinkActive="bg-main">Login</a>
+            </li>
+        }
+        @if(showLinks){
+            <li (click)="logOut()">
+                SignOut
+            </li>
+        }
+    </ul>
+</div>
+</nav> -->
+<nav class="flex flex-wrap items-center justify-between p-3 bg-gray-100">
+    <img src="../../assets/images/freshcart-logo.svg" class="h-10 w-50" alt="" />
+    <div class="flex md:hidden">
+        <button id="hamburger" (click)="toggleMenu()">
+            <img class="toggle block" src="https://img.icons8.com/fluent-systems-regular/2x/menu-squared-2.png" width="48" height="48" />
+            <img class="toggle hidden" src="https://img.icons8.com/fluent-systems-regular/2x/close-window.png" width="48" height="48" />
+        </button>
+    </div>
+    @if(showLinks){
+        <div class="toggle hidden w-full md:w-auto md:flex text-right text-bold mt-5 md:mt-0 border-t-2 border-teal-900 md:border-none">
+        <a href="#" class="block md:inline-block text-gray-700 hover:text-green-700 px-3 py-3 border-b-2 border-teal-900 md:border-none" routerLink="home">
+            Home
+        </a>
+        <a href="#" class="block md:inline-block text-gray-700 hover:text-green-700 px-3 py-3 border-b-2 border-teal-900 md:border-none" routerLink="cart">
+            cart
+        </a>
+        <a href="#" class="block md:inline-block text-gray-700 hover:text-green-700 px-3 py-3 border-b-2 border-teal-900 md:border-none" routerLink="wishlist">
+            wishlist
+        </a>
+        <a href="#"
+            class="block md:inline-block text-gray-700 hover:text-green-700 px-3 py-3 border-b-2 border-teal-900 md:border-none" routerLink="products">products
+        </a>
+        <a href="#"
+            class="block md:inline-block text-gray-700 hover:text-green-700 px-3 py-3 border-b-2 border-teal-900 md:border-none" routerLink="categories">categories
+        </a>
+        <a href="#"
+            class="block md:inline-block text-gray-700 hover:text-green-700 px-3 py-3 border-b-2 border-teal-900 md:border-none" routerLink="brands">brands
+        </a>
+
+    </div>
+    <a href="#" (click)="logOut()"
+        class="toggle hidden w-full md:w-auto md:flex text-right text-bold mt-5 md:mt-0 border-t-2 bg-green-600 rounded-md font-semibold hover:text-white text-white mx-2 px-3 py-3 border-b-2 hover:bg-green-700  md:border-none">log out
+    </a>
+    }@if(!showLinks){
+        <div class="toggle hidden w-full md:w-auto md:flex text-right text-bold mt-5 md:mt-0 border-t-2 md:border-none">
+        <a href="#" routerLink="login"
+            class="block md:inline-block bg-green-600 rounded-md font-semibold hover:text-white text-white mx-2 px-3 py-3 border-b-2 hover:bg-green-700 md:border-none">login
+        </a>
+        <a href="#" routerLink="register"
+            class="block md:inline-block bg-green-600 rounded-md font-semibold hover:text-white text-white mx-2 px-3 py-3 border-b-2 hover:bg-green-700  md:border-none">register
+        </a>
+        </div>
+        
+    }
+</nav>

@@ -1,0 +1,17 @@
+<div class="flex flex-wrap flex-col md:flex-row justify-center mt-5">
+    <input type="text" placeholder="search" class="shadow-control form-control" [(ngModel)] ="searchWord">
+    @for(p of allProducts|search:searchWord;track $index){
+        <div class="product w-full md:w-3/12 p-4 text-center">
+            <img [src]="p.imageCover" alt="" class="w-full" routerLink ="/productDetails/{{p._id}}">
+            <h5>{{p.category.name}}</h5>
+            <h4>{{p.title}}</h4>
+            <div class="flex justify-between">
+                <span>{{p.price}}EGP</span>
+                <span>{{p.ratingsAverage}}
+                    <i class="fa-solid fa-star rating-color"></i>
+                </span>
+            </div>
+            <button class="btn bg-main p-3 rounded mt-3" (click)="addToCart(p._id)">add to cart</button>
+        </div>
+    }
+</div>

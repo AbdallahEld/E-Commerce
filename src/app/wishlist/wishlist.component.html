@@ -1,0 +1,18 @@
+<div class="mt-10 bg-gray-100 py-5 mb-3">
+    <h2 class="mx-4 my-5 text-3xl font-semibold">My wish List</h2>
+    @for(w of allWishedProducts;track $index){
+        <div class="flex">
+            <div class="flex my-5"> 
+                <img [src]="w.imageCover" alt="" class=" ml-4 w-3/12" style="height:100%;">
+                <div class="w-9/12 mx-8 mt-16 font-medium">
+                    <h3 class="my-2 text-2xl">{{w.title}}</h3>
+                    <h4 class="my-2 text-xl text-green-700">{{w.price}} EGP</h4>
+                    <p class="my-2 text-lg text-red-500 underline" (click)="removeFromWishlist(w._id)">Remove</p>
+                </div>
+            </div>
+            <div class="content-center">
+                <button (click)="addToCart(w._id)" class="bg-transparent text-green-700 border py-3 px-5 rounded-lg border-green-600 font-medium hover:bg-green-700 hover:text-white transition-colors duration-300 ease-in-out whitespace-nowrap">add to Cart</button>
+            </div>
+        </div>
+    }
+</div>

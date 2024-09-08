@@ -1,0 +1,20 @@
+<form [formGroup]="recoverForm" (ngSubmit)="recoverEmail(recoverForm)" class="mt-7">
+    <label class="block">Email :</label>
+        <input placeholder="Email" type="email" formControlName="email" class="form-control shadow-control">
+        @if(recoverForm.get('email')?.touched && recoverForm.get('email')?.hasError('required')){
+            <p class="error">email is required</p>
+        }
+        @if(recoverForm.get('email')?.touched && recoverForm.get('email')?.hasError('email')){
+            <p class="error">this must be email</p>
+        }
+
+        <label class="block">Password :</label>
+        <input placeholder="newPassword" type="password" formControlName="newPassword" class="form-control shadow-control">
+        @if(recoverForm.get('newPassword')?.touched && recoverForm.get('newPassword')?.hasError('required')){
+            <p class="error">write password</p>
+        }
+        @if(recoverForm.get('newPassword')?.touched && recoverForm.get('newPassword')?.hasError('minlength')){
+            <p class="error">password must be at least 6 characters</p>
+        }
+        <button type="submit" class="btn-main">reset your password</button>
+</form>

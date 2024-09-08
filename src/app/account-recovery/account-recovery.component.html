@@ -1,0 +1,13 @@
+<form [formGroup]="emailForm" (ngSubmit)="sendResetCode(emailForm)">
+    <div class="mt-7">
+        <h1 class="text-3xl">please enter your verification code</h1>
+        <input placeholder="Email" type="email" formControlName="email" class="form-control shadow-control">
+        @if(emailForm.get('email')?.touched && emailForm.get('email')?.hasError('required')){
+            <p class="error">email is required</p>
+        }
+        @if(emailForm.get('email')?.touched && emailForm.get('email')?.hasError('email')){
+            <p class="error">this must be email</p>
+        }
+        <button type="submit" class="btn-main">verify</button>
+    </div>
+</form>

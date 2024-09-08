@@ -1,0 +1,70 @@
+<h1 class="text-3xl mt-20">register now</h1>
+
+<div class=" mx-auto p-5 mt-5 rounded"> 
+
+    @if(backendMsg !== null){
+        <h2 class="text-4xl error">{{backendMsg}}</h2>
+    }
+
+    <form [formGroup]="registerForm" (ngSubmit)="register(registerForm)">
+        
+        <label class="block">Name:</label>
+        <input placeholder="Name" type="text" formControlName="name" class="form-control shadow-control">
+
+        @if(registerForm.get('name')?.touched && registerForm.get('name')?.hasError('required')){
+            <p class="error">name is required</p>
+        }
+        @if(registerForm.get('name')?.touched && registerForm.get('name')?.hasError('minlength')){
+            <p class="error">user name at least 3 character</p>
+        }
+        @if(registerForm.get('name')?.touched && registerForm.get('name')?.hasError('maxlength')){
+            <p class="error">user name max 15 character</p>
+        }
+
+
+        <label class="block">Email:</label>
+        <input placeholder="Email" type="email" formControlName="email" class="form-control shadow-control">
+        @if(registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')){
+            <p class="error">email is required</p>
+        }
+        @if(registerForm.get('email')?.touched && registerForm.get('email')?.hasError('email')){
+            <p class="error">this must be email</p>
+        }
+
+        <label class="block">Password:</label>
+        <input placeholder="Password" type="password" formControlName="password" class="form-control shadow-control">
+        @if(registerForm.get('password')?.touched && registerForm.get('password')?.hasError('required')){
+            <p class="error">write password</p>
+        }
+        @if(registerForm.get('password')?.touched && registerForm.get('password')?.hasError('minlength')){
+            <p class="error">password must be at least 6 characters</p>
+        }
+        @if(registerForm.touched && registerForm.hasError('didntMatch')){
+            <p class="error">Password Didnt Match</p>
+        }
+
+        <label class="block">rePassword:</label>
+        <input placeholder="rePassword" type="password" formControlName="rePassword" class="form-control shadow-control">
+        @if(registerForm.get('rePassword')?.touched && registerForm.get('rePassword')?.hasError('required')){
+            <p class="error">write password</p>
+        }
+        @if(registerForm.get('rePassword')?.touched && registerForm.get('rePassword')?.hasError('minlength')){
+            <p class="error">password must be at least 6 characters</p>
+        }
+
+        <label class="block">Phone:</label>
+        <input placeholder="Phone Number" type="number" formControlName="phone" class="form-control shadow-control">
+        @if(registerForm.get('phone')?.touched && registerForm.get('phone')?.hasError('required')){
+            <p class="error">write phone</p>
+        }
+        @if(registerForm.get('phone')?.touched && registerForm.get('phone')?.hasError('pattern')){
+            <p class="error">write egyptian phone number</p>
+        }
+
+        @if(loading){
+            <button [disabled]="registerForm.invalid" type="submit" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mt-5"><i class="fa-solid fa-spinner fa-spin"></i></button>
+        }@else{
+            <button [disabled]="registerForm.invalid" type="submit" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mt-5">Register</button>
+        }
+    </form>
+</div>

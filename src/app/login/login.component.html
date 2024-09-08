@@ -1,0 +1,41 @@
+<h1 class="text-2xl my-2 font-bold">login now</h1>
+
+
+<div class="mx-auto p-5 rounded">
+
+    @if(backendMsg !== null){
+        <h2 class="text-4xl error">{{backendMsg}}</h2>
+    }
+
+    <form [formGroup]="loginForm" (ngSubmit)="login(loginForm)">
+        <label class="block">Email :</label>
+        <input placeholder="Email" type="email" formControlName="email" class="form-control shadow-control">
+        @if(loginForm.get('email')?.touched && loginForm.get('email')?.hasError('required')){
+            <p class="error">email is required</p>
+        }
+        @if(loginForm.get('email')?.touched && loginForm.get('email')?.hasError('email')){
+            <p class="error">this must be email</p>
+        }
+
+        <label class="block">Password :</label>
+        <input placeholder="Password" type="password" formControlName="password" class="form-control shadow-control">
+        @if(loginForm.get('password')?.touched && loginForm.get('password')?.hasError('required')){
+            <p class="error">write password</p>
+        }
+        @if(loginForm.get('password')?.touched && loginForm.get('password')?.hasError('minlength')){
+            <p class="error">password must be at least 6 characters</p>
+        }
+        @if(loginForm.touched && loginForm.hasError('didntMatch')){
+            <p class="error">Password Didnt Match</p>
+        }
+
+        <div class="flex justify-between">
+            <h3 class="mt-4 text-xl transition duration-300 ease-in-out hover:text-green-700" (click)="accountRecovery()">forget password ?</h3>
+            @if(loading){
+                <button [disabled]="loginForm.invalid" type="submit" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mt-5"><i class="fa-solid fa-spinner fa-spin"></i></button>
+            }@else{
+                <button [disabled]="loginForm.invalid" type="submit" class="focus:outline-none text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 mt-5">Login</button>
+            }
+        </div>
+    </form>
+</div>

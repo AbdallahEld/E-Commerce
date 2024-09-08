@@ -1,0 +1,8 @@
+<form [formGroup]="codeForm" (ngSubmit)="recoverCode(codeForm)">
+    <div class="mt-7">
+        <h1 class="text-3xl">please enter your verification code</h1>
+        <input placeholder="reset code" type="text" formControlName="resetCode" class="form-control shadow-control">
+
+        <button type="submit" class="btn-main">send</button>
+    </div>
+</form>
